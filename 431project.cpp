@@ -71,7 +71,7 @@ int main(int argc, char** argv){
   std::cout <<std::endl; //clean up line breaks for baseline
   
   // do extremely simplistic approximation of simulated annealing
-  for(unsigned int round =1; round < 10; ++round){
+  for(unsigned int round =1; round < 51; ++round){
     double threshold=pow(2.71,((-1.0)*(1+(round)/5.0)));
     for(unsigned int iteration=1; iteration < 21; ++iteration){
       double randDbl=((double)(rand()))/((double)(RAND_MAX));

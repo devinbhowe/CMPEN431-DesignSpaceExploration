@@ -98,8 +98,8 @@ class TestLoopInfo
 		
 	TestLoopInfo( ) {
 		l1setsTestDone = false;
-		il1sets = 3;
-		dl1sets = 3;
+		il1sets = 0;
+		dl1sets = 0;
 		width = 0;
 		il1lat = 0;
 		dl1lat = 0;
@@ -161,18 +161,18 @@ class TestLoopInfo
 			il1sets++;	
 		} else if (il1lat < 2) {
 			width = 0;
-			il1sets = 3;
+			il1sets = 0;
 			il1lat++;
 		} else if (dl1sets < 8) {
 			width = 0;
-			il1sets = 3;
+			il1sets = 0;
 			il1lat = 0;
 			dl1sets++;	
 		} else if (dl1lat < 2) {
 			width = 0;
-			il1sets = 3;
+			il1sets = 0;
 			il1lat = 0;
-			dl1sets = 3;
+			dl1sets = 0;
 			dl1lat++; 
 		} else {
 			l1setsTestDone = true;
@@ -412,7 +412,8 @@ std::string YourProposalFunction(std::string currentconfiguration_s,
 		dimensions d;	
 		nextConfiguration[d = fetchspeed] = 1;
 		nextConfiguration[d = Memports] = 1;
-		 			
+		nextConfiguration[d = tlbsets] = 4;
+		  			
 		// Finding optimality for L2 Cache
 		// Can control sets, blocksize, ways, and latency
 		// Cache size is inversely related to our chosen latency
@@ -425,7 +426,7 @@ std::string YourProposalFunction(std::string currentconfiguration_s,
 		// We also know block size needs to be >= I$ + D$ blocksize, which will be minimum 32. So we can only
 		// test block sizes 32, 64, and 128.
 		// We'll evaluate the best options from all sets and block sizes, all ways, and
-		// latencies 8-11
+		// latencies 5-11
 		if (!testInfo.ul2TestDone) {
 			nextConfiguration[d=il1assoc] = 2;
 			nextConfiguration[d=dl1assoc] = 2;
